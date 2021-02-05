@@ -3,15 +3,7 @@ import React from "react";
 import MessageForm from "./MessageForm/MessageForm";
 import MyMessage from "./MyMessage/MyMessage";
 import TheirMessage from "./TheirMessage/TheirMessage";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    ...theme.typography.button,
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(1),
-  },
-}));
+import { useStyles } from './ChatFeedStyles'
 
 export default function ChatFeed(props: any) {
   const classes = useStyles();

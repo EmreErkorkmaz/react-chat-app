@@ -1,23 +1,9 @@
 import { useState } from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { customIsTyping, customSendMessage } from "../../../utilities/index";
 import { ImageOutlined, Send } from "@material-ui/icons";
 import { Grid, IconButton } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-      },
-      marginRight: "1rem",
-    },
-    input: {
-      width: "100%",
-    },
-  })
-);
+import { useStyles } from './MessageFormStyles';
 
 const MessageForm = (props: any) => {
   const classes = useStyles();
@@ -26,9 +12,7 @@ const MessageForm = (props: any) => {
 
   const [value, setValue] = useState("");
 
-  const onSubmitHandler = (
-    event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLDivElement>
-  ) => {
+  const onSubmitHandler = (event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLDivElement>) => {
     event.preventDefault();
 
     const text = value.trim();
@@ -39,9 +23,7 @@ const MessageForm = (props: any) => {
     setValue("");
   };
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const target: any = event.target;
     setValue(target.value);
 
