@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { customIsTyping, customSendMessage } from "../utilities/index";
+import { customIsTyping, customSendMessage } from "../../../utilities/index";
 import { ImageOutlined, Send } from "@material-ui/icons";
 import { Grid, IconButton } from "@material-ui/core";
 

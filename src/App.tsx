@@ -1,6 +1,6 @@
 import { TSChatEngine } from "./utilities/index";
-import ChatFeed from "./components/ChatFeed";
-import LoginForm from "./components/LoginForm";
+import ChatFeed from "./components/ChatFeed/ChatFeed";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 function App() {
   if (!localStorage.getItem("username")) return <LoginForm />;
