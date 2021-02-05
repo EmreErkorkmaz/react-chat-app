@@ -37,7 +37,7 @@ const MessageForm = (props: any) => {
 
   return (
     <form onSubmit={(event) => onSubmitHandler(event)} className={classes.root}>
-      <Grid container spacing={1} justify="center" alignItems="center">
+      <Grid container spacing={1} justify="center" alignItems="center" className={classes.containerGrid}>
         <Grid item xs={9}>
           <TextField
             className={classes.input}

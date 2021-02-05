@@ -1,22 +1,8 @@
 import { useState } from "react";
-import { Button, Grid, TextField, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
+import { Button, CircularProgress, Grid, TextField, Typography } from "@material-ui/core";
 import axios from "axios";
 import { Alert } from "@material-ui/lab";
-
-const useStyles = makeStyles({
-  formControl: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  formInput: {
-    margin: "2rem",
-  },
-  gridBackground: {
-    backgroundColor: "#cfe8fc",
-    height: "100vh",
-  },
-});
+import { useStyles } from './LoginFormStyles';
 
 const LoginForm = () => {
   const classes = useStyles();
@@ -24,9 +10,12 @@ const LoginForm = () => {
   const [username, setUsername] = useState("guest");
   const [password, setPassword] = useState("123456");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setIsLoading(true);
 
     const authObject = {
       "Project-Id": "280b36f4-441c-4697-a7fe-c5e224ba9540",
@@ -45,6 +34,7 @@ const LoginForm = () => {
       window.location.reload();
     } catch (error) {
       setError("Incorrect username/password");
+      setIsLoading(false);
     }
   };
 
@@ -62,14 +52,14 @@ const LoginForm = () => {
         alignItems="center"
       >
         <Grid item>
-          <Typography variant="h3" noWrap>
+          <Typography variant="h4" noWrap>
             Chat Application
           </Typography>
         </Grid>
         <Grid item>
           <form onSubmit={handleSubmit} className={classes.formControl}>
             <Grid container justify="center">
-              <Grid item xs="auto" sm={12}>
+              <Grid item xs={12} sm={12}>
                 <TextField
                   fullWidth
                   className={classes.formInput}
@@ -81,7 +71,7 @@ const LoginForm = () => {
                   required
                 />
               </Grid>
-              <Grid item xs="auto" sm={12}>
+              <Grid item xs={12} sm={12}>
                 <TextField
                   fullWidth
                   className={classes.formInput}
@@ -93,9 +83,9 @@ const LoginForm = () => {
                   required
                 />
               </Grid>
-              <Grid item xs="auto" sm={12}>
-                <Button className={classes.formInput} fullWidth type="submit" variant="contained" color="primary">
-                  Login
+              <Grid item xs={12} sm={12}>
+                <Button className={classes.formInput} disabled={isLoading} fullWidth type="submit" variant="contained" color="primary">
+                  {isLoading ? <CircularProgress /> : 'Login'}
                 </Button>
               </Grid>
             </Grid>

@@ -10,7 +10,11 @@ export const useStyles = makeStyles((theme) =>
       marginRight: "1rem",
     },
     input: {
-      width: "100%",
+      width: "80%",
+      float: 'right'
     },
+    containerGrid: {
+      marginTop: '3rem'
+    }
   })
 );

@@ -77,7 +77,7 @@ export default function ChatFeed(props: any) {
   };
 
   return (
-    <div >
+    <>
       <Grid
         container
         justify="flex-start"
@@ -114,6 +114,6 @@ export default function ChatFeed(props: any) {
       <div>
         <MessageForm {...props} chatId={activeChat} />
       </div>
-    </div>
+    </>
   );
 }
