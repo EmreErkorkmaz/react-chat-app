@@ -25,7 +25,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("123456");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const authObject = {
@@ -48,7 +48,7 @@ const LoginForm = () => {
     }
   };
 
-  const handleUsername = (event) => {
+  const handleUsername = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setUsername(event.target.value);
   };
 

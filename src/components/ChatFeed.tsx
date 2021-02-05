@@ -13,15 +13,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ChatFeed(props) {
+export default function ChatFeed(props: any) {
   const classes = useStyles();
   const { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
 
-  const renderReadReceipts = (message, isMyMessage) => {
+  const renderReadReceipts = (message: {id: number}, isMyMessage: boolean) => {
     return chat.people.map(
-      (person, index) =>
+      (person: {last_read: number, person: {avatar: string}}, index: number) =>
         person.last_read === message.id && (
           <div
             key={`read_${index}`}
@@ -39,7 +39,7 @@ export default function ChatFeed(props) {
 
     return keys.map((key, index) => {
       const message = messages[key];
-      const lastMessageKey = index === 0 ? null : keys[index - 1];
+      const lastMessageKey: any = index === 0 ? null : keys[index - 1];
       const isMyMessage = userName === message.sender.username;
 
       return (
@@ -99,7 +99,7 @@ export default function ChatFeed(props) {
           <Grid container style={{ marginBottom: '16px' }}>
             <Grid item>
 
-            {chat.people.map((person, index) => (
+            {chat.people.map((person: {last_read: number, person: {avatar: string, username: string}}, index: number) => (
               <Chip
                 key={index}
                 avatar={<Avatar src={person?.person?.avatar} alt={person.person.username[0]}/>}

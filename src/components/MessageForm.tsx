@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { isTyping, sendMessage } from "react-chat-engine";
+import { customIsTyping, customSendMessage } from "../utilities/index";
 import { ImageOutlined, Send } from "@material-ui/icons";
 import { Grid, IconButton } from "@material-ui/core";
 
@@ -19,36 +19,42 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const MessageForm = (props) => {
+const MessageForm = (props: any) => {
   const classes = useStyles();
 
   const { chatId, creds } = props;
 
   const [value, setValue] = useState("");
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = (
+    event: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLDivElement>
+  ) => {
     event.preventDefault();
 
     const text = value.trim();
 
     if (text.length > 0) {
-      sendMessage(creds, chatId, { text });
+      customSendMessage(creds, chatId, { text });
     }
     setValue("");
   };
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    const target: any = event.target;
+    setValue(target.value);
 
-    isTyping(props, chatId);
+    customIsTyping(props, chatId);
   };
 
-  const handleUpload = (event) => {
-    sendMessage(creds, chatId, { files: event.target.files, text: "" });
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target: any = event.target;
+    customSendMessage(creds, chatId, { files: target.files, text: "" });
   };
 
   return (
-    <form onSubmit={onSubmitHandler} className={classes.root}>
+    <form onSubmit={(event) => onSubmitHandler(event)} className={classes.root}>
       <Grid container spacing={1} justify="center" alignItems="center">
         <Grid item xs={9}>
           <TextField
