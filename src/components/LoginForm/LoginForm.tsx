@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Button, CircularProgress, Grid, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import axios from "axios";
 import { Alert } from "@material-ui/lab";
-import { useStyles } from './LoginFormStyles';
+import { useStyles } from "./LoginFormStyles";
 
 const LoginForm = () => {
   const classes = useStyles();
@@ -38,7 +44,9 @@ const LoginForm = () => {
     }
   };
 
-  const handleUsername = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleUsername = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setUsername(event.target.value);
   };
 
@@ -84,16 +92,21 @@ const LoginForm = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Button className={classes.formInput} disabled={isLoading} fullWidth type="submit" variant="contained" color="primary">
-                  {isLoading ? <CircularProgress /> : 'Login'}
+                <Button
+                  className={classes.formInput}
+                  disabled={isLoading}
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
+                  {isLoading ? <CircularProgress /> : "Login"}
                 </Button>
               </Grid>
             </Grid>
           </form>
         </Grid>
-        <Grid item>
-        {error && <Alert severity="error">{error}</Alert>}
-        </Grid>
+        <Grid item>{error && <Alert severity="error">{error}</Alert>}</Grid>
       </Grid>
     </>
   );

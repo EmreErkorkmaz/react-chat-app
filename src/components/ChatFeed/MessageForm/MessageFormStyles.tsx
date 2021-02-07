@@ -1,6 +1,5 @@
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 
-
 export const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -11,10 +10,10 @@ export const useStyles = makeStyles((theme) =>
     },
     input: {
       width: "80%",
-      float: 'right'
+      float: "right",
     },
     containerGrid: {
-      marginTop: '3rem'
-    }
+      marginTop: "3rem",
+    },
   })
 );
